@@ -1,7 +1,7 @@
 const express=require('express');
 const bodyParser=require('body-parser');
 
-const { PORT }=require('./configs/serverconfig');
+const { PORT }=require('./config/serverconfig');
 
 const setupandStartserver=async ()=>{
     
