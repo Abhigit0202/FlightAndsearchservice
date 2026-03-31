@@ -1,7 +1,7 @@
 const express=require('express');
 const bodyParser=require('body-parser');
-
 const { PORT }=require('./config/serverconfig');
+const CityRepository = require('./repository/city-repository');
 
 const setupandStartserver=async ()=>{
     
@@ -13,8 +13,10 @@ const setupandStartserver=async ()=>{
     app.use(bodyParser.urlencoded({extended:true}));
 
     
-    app.listen(PORT,()=>{
+    app.listen(PORT,async ()=>{
         console.log(`Sever is live at ${PORT}`);
+        const repo = new CityRepository();
+        repo.createCity({name:"New Delhi"});
     });
 }
 
