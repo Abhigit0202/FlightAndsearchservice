@@ -22,14 +22,15 @@ class CityRepository{
                 where:{
                     id : cityId
                 }
-            })
+            });
+            return true;
         } catch (error) {
             console.log("Something went wrong");
             throw {error};
         }
     }
 
-    async updateCity(cityId){
+    async updateCity(cityId,data){
         try {
             const city= await City.update(data, {
                 where:{
@@ -38,7 +39,8 @@ class CityRepository{
             });
             return city;
         } catch (error) {
-            
+            console.log("Something went wrong");
+            throw {error};
         }
     }
 
