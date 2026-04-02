@@ -11,7 +11,7 @@ class CityRepository{
             });
             return city;
         } catch (error){
-            console.log("Something went wrong");
+            console.log("Something went wrong in the repo-layer");
             throw {error};
         }
     }
@@ -25,7 +25,7 @@ class CityRepository{
             });
             return true;
         } catch (error) {
-            console.log("Something went wrong");
+            console.log("Something went wrong in the repo-layer");
             throw {error};
         }
     }
@@ -46,7 +46,7 @@ class CityRepository{
             await city.save();
             return city;
         } catch (error) {
-            console.log("Something went wrong");
+            console.log("Something went wrong in the repo-layer");
             throw {error};
         }
     }
@@ -61,7 +61,17 @@ class CityRepository{
             const city = await City.findByPk(cityId);//above and this function is same
             return city;
         } catch (error) {
-            console.log("Something went wrong");
+            console.log("Something went wrong in the repo-layer");
+            throw {error};
+        }
+    }
+
+    async getAllcities(){
+        try {
+            const cities = await City.findAll();
+            return cities;
+        } catch (error) {
+            console.log("Something went wrong in the repo-layer");
             throw {error};
         }
     }
