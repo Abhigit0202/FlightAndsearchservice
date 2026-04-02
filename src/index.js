@@ -15,7 +15,7 @@ const setupandStartserver=async ()=>{
     app.use('/api',ApiRoutes);
     
     app.listen(PORT,async ()=>{
-        console.log(`Sever is live at ${PORT}`);
+        console.log(`Server is live at ${PORT}`);
     });
 }
 
