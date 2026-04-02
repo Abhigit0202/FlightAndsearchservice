@@ -1,3 +1,6 @@
+const { Op } = require("sequelize");
+// Doing this to have like Words Search
+
 const { City }=require('../models/index');
 //doing this will put all the models in the models used in that folder
 
@@ -66,8 +69,18 @@ class CityRepository{
         }
     }
 
-    async getAllcities(){
+    async getAllcities(filter){//filter can be empty also
         try {
+            if(filter.name){
+                const cities = await City.findAll({
+                    where: {
+                        name: {
+                            [Op.startsWith]: filter.name // this will give all the cities whose name starts with the filter name
+                        }
+                    }
+                });
+                return cities;
+            }
             const cities = await City.findAll();
             return cities;
         } catch (error) {
