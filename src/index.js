@@ -4,7 +4,10 @@ const { PORT }=require('./config/serverconfig');
 const ApiRoutes=require('./routes/index');
 
 const setupandStartserver=async ()=>{
-    
+const db=require('./models/index');
+
+const {Airplane}=db;
+
     //Create server
     const app=express();
 
@@ -17,10 +20,12 @@ const setupandStartserver=async ()=>{
     app.listen(PORT,async ()=>{
         console.log(`Server is live at ${PORT}`);
         if(process.env.SYNC_DB){
-            const db=require('./models/index');
             await db.sequelize.sync({alter:true});
             console.log('Database synced successfully');
         }
+        await Airplane.create({
+            modelNumber:'Bombardier CRJ900',
+        })
     });
 }
 
