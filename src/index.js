@@ -16,6 +16,11 @@ const setupandStartserver=async ()=>{
     
     app.listen(PORT,async ()=>{
         console.log(`Server is live at ${PORT}`);
+        if(process.env.SYNC_DB){
+            const db=require('./models/index');
+            await db.sequelize.sync({alter:true});
+            console.log('Database synced successfully');
+        }
     });
 }
 
