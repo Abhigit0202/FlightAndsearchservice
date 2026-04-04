@@ -23,9 +23,6 @@ const {Airplane}=db;
             await db.sequelize.sync({alter:true});
             console.log('Database synced successfully');
         }
-        await Airplane.create({
-            modelNumber:'Bombardier CRJ900',
-        })
     });
 }
 
