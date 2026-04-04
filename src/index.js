@@ -19,10 +19,6 @@ const {Airplane}=db;
     
     app.listen(PORT,async ()=>{
         console.log(`Server is live at ${PORT}`);
-        if(process.env.SYNC_DB){
-            await db.sequelize.sync({alter:true});
-            console.log('Database synced successfully');
-        }
     });
 }
 
