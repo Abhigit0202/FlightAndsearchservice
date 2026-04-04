@@ -1,4 +1,4 @@
-const {FlightService} = require('../services/index');
+const { FlightService } = require('../services/index');
 
 const flightService = new FlightService();
 
@@ -8,9 +8,9 @@ const create = async (req, res) => {
         return res.status(201).json({
             data: flight,
             success: true,
-            err: {},
-            message: 'Successfully created a flight'
-        })
+            message: 'Successfully created a flight',
+            err: {}
+        });
     } catch (error) {
         console.log(error);
         return res.status(500).json({
