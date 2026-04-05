@@ -4,7 +4,18 @@ const flightService = new FlightService();
 
 const create = async (req, res) => {
     try {
-        const flight = await flightService.createFlight(req.body);
+        //to make sure that end-user is not sending extra-random data, we want to keep and pass the meaning ful info, so we create a filter for that
+        const flighRequestData = {
+            flightNumber: req.body.flightNumber,
+            airplaneId: req.body.airplaneId,
+            departureAirportId: req.body.departureAirportId,
+            arrivalAirportId: req.body.arrivalAirportId,
+            arrivalTime: req.body.arrivalTime,
+            departureTime: req.body.departureTime,
+            price: req.body.price
+        }
+
+        const flight = await flightService.createFlight(flighRequestData);
         return res.status(201).json({
             data: flight,
             success: true,
