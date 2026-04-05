@@ -2,6 +2,8 @@
 module.exports = {
     CityRepository: require('./city-repository'),
     FlightRepository: require('./flight-repository'),
-    AirplaneRepository: require('./airplane-repository')
+    AirplaneRepository: require('./airplane-repository'),
+    AirportRepository: require('./airport-repository'),
+    CrudRepository: require('./crud-repository')
 }
 //We are using index.js just to accumulate all the repo of repository in one place, just to send all the repos to different from one file
